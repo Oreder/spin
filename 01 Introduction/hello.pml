@@ -1,16 +1,20 @@
-/* A "Hello World" Promela model for SPIN. 
- * Running SPIN in random simulation mode:
- * > spin -n2 hello.pml
- * \where flag -n2: random seed
- */
- 
-active proctype Hello() {
-    printf("Hello process, my pid is: %d\n", _pid);
+proctype A1() {
+    int l = 1, d, f, k;
+    d = l + 3;
+    f = d + 1;
+    k = f + d;
+    printf("%d\n", k)
+}
+
+proctype A2() {
+    int l = 2, d, f, k;
+    d = l + 3;
+    f = d + 1;
+    k = f + d;
+    printf("%d\n", k)
 }
 
 init {
-    int lastpid;
-    printf("init process, my pid is: %d\n", _pid);
-    lastpid = run Hello();
-    printf("last pid was: %d\n", lastpid);
+    run A1();
+    run A2();
 }
